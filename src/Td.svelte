@@ -4,7 +4,6 @@
 
 	export let init
 	export let dimensions
-	export let debug
 	export let callbacks
 	export let features
 

@@ -1,11 +1,7 @@
 <script>
-
-
 	import Tr from './Tr.svelte'
-	import Td from './Td.svelte'
 	import { onMount, onDestroy } from 'svelte'
 	import dragdrop from 'svelte-native-drag-drop'
-	import { fade } from 'svelte/transition'
 	import { defaults, slugify } from './defaults.js'
 	import { createEventDispatcher } from 'svelte'
 
@@ -53,7 +49,10 @@
 
 	}
 
-	$: rev = review( init, dimensions, callbacks, features, misc )
+  export let debug = false
+	$: if (debug) {
+		review( init, dimensions, callbacks, features, misc )
+	}
 
 	let class_ = ''
 	export { class_ as class }
@@ -70,7 +69,6 @@
 	}
 
 	export let dimensions = {...defaults.dimensions}
-	export let debug = false
 	export let id = 'table'
 
 	onMount( async () => {
