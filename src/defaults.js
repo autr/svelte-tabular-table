@@ -26,6 +26,8 @@ export const defaults = {
 				u => u.updated
 			])
 
+			return callback( copy )
+
 			const min = 20
 			let increase = 1
 

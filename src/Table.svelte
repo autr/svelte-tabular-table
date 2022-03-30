@@ -101,7 +101,8 @@
 		}, 
 		rearrangeable: null, // <- callback event for rearranging with integer index (from, to) as arguments
 		checkable: null,
-		autohide: null
+		autohide: null,
+		infinite: null
 	}
 
 	let misc = {
@@ -301,12 +302,14 @@
 
 
 	let data = []
+	let DATA = []
 
 	let previousSortEvent
 	$: ( (_key, _direction) => {
 		const sortEvent = _key + _direction + init.data.length
 		if (sortEvent == previousSortEvent) return
 		previousSortEvent = sortEvent
+		console.log('[svelte-tabular-table] sorting event')
 		if (_key) {
 			const fn = (callbacks?.sort || defaults.sort)
 			data = []
@@ -323,6 +326,7 @@
 		} else {
 			data = init.data
 		}
+		// DATA = data
 	})( features?.sortable?.key, features?.sortable?.direction )
 
 	$: tableLayout = dimensions.widths ? 'table-layout:fixed;' : ''
