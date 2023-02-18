@@ -31,6 +31,8 @@ Basic configuration:
 \* If no valid `init.index` is set, or if there are duplicate values inside data, the table will attempt to generate unique keys.  
 \*\* Enabling this means `dimensions` and `features.autohide` will not work.
 
+```svelte
+
     <script>
     import { Table } from 'svelte-tabular-table'
     const config = {
@@ -46,6 +48,8 @@ Basic configuration:
     </script>
     <Table {...config} />
 
+```
+
 ### [Example 2 - Dimensions](https://autr.github.io/svelte-tabular-table#dimensions)
 
 Dimensions control the formatting of the table:
@@ -56,6 +60,8 @@ Dimensions control the formatting of the table:
 *   `dimensions.minwidth` - minimum width of table (int or string)
 
 When using `features.autohide` it is important to set dimensions, so that each row is a consistent height.
+
+```svelte
 
     <script>
     import { Table } from 'svelte-tabular-table'
@@ -76,9 +82,13 @@ When using `features.autohide` it is important to set dimensions, so that each r
     </script>
     <Table {...config} />
 
+```
+
 ### [Example 3 - Sortable](https://autr.github.io/svelte-tabular-table#sortable)
 
 Sortable headers can be initialised by setting `features.sortable.key` to an initial value and `features.sortable.direction` to `true (ascending)` or `false (descending)`.
+
+```svelte
 
     <script>
     import { Table } from 'svelte-tabular-table'
@@ -98,10 +108,13 @@ Sortable headers can be initialised by setting `features.sortable.key` to an ini
     </script>
     <Table {...config} />
 
+```
+
 ### [Example 4 - Checkable](https://autr.github.io/svelte-tabular-table#checkable)
 
 Checkable rows are initialised by passing a blank `{}` object to `features.checkable`, which will be set via `init.index`.
 
+```svelte
     <script>
     import { Table } from 'svelte-tabular-table'
     const config = {
@@ -121,9 +134,13 @@ Checkable rows are initialised by passing a blank `{}` object to `features.check
     </script>
     <Table {...config} />
 
+```
+
 ### [Example 5 - Rearrangeable](https://autr.github.io/svelte-tabular-table#rearrangeable)
 
 Rearrangeable rows are initialised by passing a callback function to `features.rearrangeable`, which will return the _from_ and _to_ indexes as an integer: `( from, to ) => ...`
+
+```svelte
 
     <script>
     import { Table } from 'svelte-tabular-table'
@@ -141,6 +158,7 @@ Rearrangeable rows are initialised by passing a callback function to `features.r
     </script>
     <Table {...config} />
 
+```
 ### [Example 6 - Autohide (1)](https://autr.github.io/svelte-tabular-table#autohide-1)
 
 Autohide will stop rows that are currently not in view from rendering - increasing performance on tables with large datasets or images and video. It can be used inside a container, or with the window element - and must be manually triggered via `features.autohide.position`:
@@ -150,6 +168,8 @@ Autohide will stop rows that are currently not in view from rendering - increasi
 *   `features.autohide.buffer` - sets extra space before rows are hidden as a multiple of `container.offsetHeight` (ie. 0.5 \* 400 = 200px buffer)
 
 Example is using `window` as container with **`buffer` set to minus `-0.1` to illustrate limits of hidden row edges**:
+
+```svelte
 
     <script>
     import { Table } from 'svelte-tabular-table'
@@ -175,9 +195,12 @@ Example is using `window` as container with **`buffer` set to minus `-0.1` to il
     </script>
     <Table {...config} />
 
+```
 ### [Example 7 - Autohide (2)](https://autr.github.io/svelte-tabular-table#autohide-2)
 
 Example using a _container_, see [Autohide (1)](#autohide-1):
+
+```svelte
 
     <script>
     import { Table } from 'svelte-tabular-table'
@@ -202,6 +225,8 @@ Example using a _container_, see [Autohide (1)](#autohide-1):
     }
     </script>
     <Table {...config} />
+    
+```
 
 ### [Example 8 - Callbacks](https://autr.github.io/svelte-tabular-table#callbacks)
 
@@ -211,6 +236,8 @@ Callbacks can be defined for:
 *   `callbacks.click.cell` or `callbacks.click.key` - returning with `{id, item, key, value, rowIndex, cellIndex, _event_}` argument
 
 \* Render callback can also be a component reference (see [Example 9 - Components](#components)):
+
+```svelte
 
     <script>
     import { Table } from 'svelte-tabular-table'
@@ -234,10 +261,14 @@ Callbacks can be defined for:
     }
     </script>
     <Table {...config} />
+    
+```
 
 ### [Example 9 - Components](https://autr.github.io/svelte-tabular-table#components)
 
 In place of a callback render function, a `svelte:component` can be used with the properties `{id, item, key, value, index}`:
+
+```svelte
 
     <script>
     import Auto from './Auto.svelte'
@@ -285,11 +316,15 @@ In place of a callback render function, a `svelte:component` can be used with th
     {:else}
         {value}
     {/if}
+    
+```
 
 ### [Example 10 - Classes](https://autr.github.io/svelte-tabular-table#classes)
 
 The classes object is a list of classes that are applied to a row based on it's `id`.  
 In this example we are setting an orange and yellow background class when a cell item is clicked:
+
+```svelte
 
     <script>
     import Auto from './Auto.svelte'
@@ -345,7 +380,7 @@ In this example we are setting an orange and yellow background class when a cell
     {:else}
         {value}
     {/if}
-
+```
 API Documentation
 =================
 
